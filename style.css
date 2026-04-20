@@ -129,3 +129,12 @@ body {
 .main p {
   font-size: large;
 }
+.word-group {
+  opacity: 0;
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

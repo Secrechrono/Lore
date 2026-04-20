@@ -8,7 +8,19 @@ const texts = [
   },
   //{ title: "Standalone Text", file: "Texts/standalone.txt" }
 ]
-
+function revealWords(container) {
+  const elements = container.querySelectorAll("p, h1")
+  let globalIndex = 0
+  elements.forEach(el => {
+    if (el.innerHTML.trim() === "") return
+    const words = el.innerHTML.split(" ")
+    el.innerHTML = words.map(word => {
+      const groupIndex = Math.floor(globalIndex / 50)
+      globalIndex++
+      return `<span class="word-group" style="animation-delay: ${groupIndex * 0.3}s">${word} </span>`
+    }).join("")
+  })
+}
 const main = document.querySelector(".main")
 const sidebar = document.querySelector(".sidebar")
 
@@ -23,6 +35,7 @@ function loadText(item) {
         <h1>${item.title}</h1>
         ${paragraphs.map(p => `<p>${p.replaceAll("\n", "<br>")}</p>`).join("")}
       `
+      revealWords(main)
     })
 }
 
