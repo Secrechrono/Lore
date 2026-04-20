@@ -9,15 +9,26 @@ const texts = [
   //{ title: "Standalone Text", file: "Texts/standalone.txt" }
 ]
 function revealWords(container) {
-  const elements = container.querySelectorAll("p, h1")
+  const h1 = container.querySelector("h1")
+  const paragraphs = container.querySelectorAll("p")
   let globalIndex = 0
-  elements.forEach(el => {
+
+  if (h1) {
+    h1.style.opacity = "0"
+    h1.style.animation = "fadeIn 1.6s ease forwards"
+    h1.style.animationDelay = "0s"
+    globalIndex = 10
+  }
+
+  const titleDelay = 0.6
+
+  paragraphs.forEach(el => {
     if (el.innerHTML.trim() === "") return
     const words = el.innerHTML.split(" ")
     el.innerHTML = words.map(word => {
       const groupIndex = Math.floor(globalIndex / 50)
       globalIndex++
-      return `<span class="word-group" style="animation-delay: ${groupIndex * 0.3}s">${word} </span>`
+      return `<span class="word-group" style="animation-delay: ${titleDelay + groupIndex * 0.3}s">${word} </span>`
     }).join("")
   })
 }
