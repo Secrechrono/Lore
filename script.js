@@ -16,7 +16,7 @@ const texts = [
     folder: "Leythafer's Last Afair",
     items: [
       { title: "The Leythafer", file: "Texts/TheLeythafer.txt", spotify: "7bRuu4oZs91UiNOj1cBAvj" },
-      {title: "The Pact",file:"Texts/ThePact.txt", spotify:"2OCheuqRCvchFZ12tvfMqb"},
+      {title: "The Pact",file:"Texts/Thepact.txt", spotify:"2OCheuqRCvchFZ12tvfMqb"},
       {title: "The Tool",file:"Texts/TheTool.txt", spotify:"4ndzCwHkjo9fkN6jbSqNlB"},
       {title: "Mireborn",file:"Texts/Mireborn.txt", spotify:"6XydPDin3lvWsT1tJI4QdL"},
       {title: "To Find Purpose One Must Eat",file:"Texts/ToFindPurposeOneMustEat.txt", spotify:"30c5iFJK2xkw6gwENm2Stx"},
