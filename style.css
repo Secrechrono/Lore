@@ -138,3 +138,43 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+.spotify-wrapper {
+  display: none;
+    position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+      scrollbar-width: none ;
+}
+.spotify-player{
+    border-radius: 12px;
+
+}
+.hide-spotify {
+  margin-top: 20px;
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  color: #d0d0d0;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Libre Baskerville", serif;
+}
+.hide-spotify-btn {
+  display: block;
+  text-align: center;
+  color: #d0d0d0;
+  font-size: 1.2rem;
+  padding: 10px 0;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+    position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+}
+
+.sidebar:hover .hide-spotify-btn {
+  opacity: 1;
+}

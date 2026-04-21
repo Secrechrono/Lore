@@ -2,12 +2,29 @@ const texts = [
   {
     folder: "The Human Frequency",
     items: [
-      { title: "Η Ανθρώπινη Συχνότητα", file: "Texts/Η Ανθρώπινη Συχνότητα" },
-      { title: "Στιγμιαία Ταλάντωση", file: "Texts/Στιγμιαία Ταλάντωση.txt" }
+      { title: "Η Ανθρώπινη Συχνότητα", file: "Texts/Η Ανθρώπινη Συχνότητα", spotify: "5XaDhLfoLGPpIIlykywPmP" },
+      { title: "Στιγμιαία Ταλάντωση", file: "Texts/Στιγμιαία Ταλάντωση.txt", spotify: "5XaDhLfoLGPpIIlykywPmP" }
     ]
-  },
-  //{ title: "Standalone Text", file: "Texts/standalone.txt" }
+  }
 ]
+
+const main = document.querySelector(".main")
+const sidebar = document.querySelector(".sidebar")
+
+let spotifyHidden = false
+document.querySelector(".hide-spotify-btn").addEventListener("click", function() {
+  spotifyHidden = !spotifyHidden
+  const wrapper = document.querySelector(".spotify-wrapper")
+  wrapper.style.display = spotifyHidden ? "none" : "block"
+  this.style.opacity = spotifyHidden ? "0.4" : "1"
+})
+
+document.querySelector(".hide-spotify").addEventListener("click", function() {
+  spotifyHidden = !spotifyHidden
+  const wrapper = document.querySelector(".spotify-wrapper")
+  wrapper.style.display = "none"
+  this.textContent = spotifyHidden ? "Show Music" : "Hide Music"
+})
 function revealWords(container) {
   const h1 = container.querySelector("h1")
   const paragraphs = container.querySelectorAll("p")
@@ -31,11 +48,22 @@ function revealWords(container) {
       return `<span class="word-group" style="animation-delay: ${titleDelay + groupIndex * 0.3}s">${word} </span>`
     }).join("")
   })
+
+  const totalDuration = titleDelay + Math.floor(globalIndex / 50) * 0.3 + 2
+  const wrapper = document.querySelector(".spotify-wrapper")
+  if (!spotifyHidden){
+  wrapper.style.display = "block"
+  wrapper.style.opacity = "0"
+  wrapper.style.transition = "opacity 1s ease"
+  setTimeout(() => { wrapper.style.opacity = "1" }, totalDuration * 1000)
+  }
 }
-const main = document.querySelector(".main")
-const sidebar = document.querySelector(".sidebar")
 
 function loadText(item) {
+  if (item.spotify) {
+    document.querySelector(".spotify-player").src =
+      `https://open.spotify.com/embed/track/${item.spotify}`
+  }
   fetch(item.file)
     .then(response => response.text())
     .then(content => {

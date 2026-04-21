@@ -12,15 +12,28 @@
     <div class="layout">
       <div class="sidebar">
         <span class="sidebar-indicator">›</span>
+        <span class="hide-spotify-btn">♪</span>
       </div>
       <div class="main">
         <div class="intro">
           <h1>Archive</h1>
           <p>A collection of texts: I wrote over my university years, If you hold this link then I hold you dear</p>
           <p>-Christos</p>
+          <button class="hide-spotify">Hide Music</button>
         </div>
       </div>
     </div>
     <script src="script.js"></script>
+    <div class="spotify-wrapper">  
+      <iframe class="spotify-player"
+      src="https://open.spotify.com/embed/track/YOUR_TRACK_ID"
+      width="400"
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      scrolling="no"
+    </iframe>
+  </div>
+
   </body>
 </html>
