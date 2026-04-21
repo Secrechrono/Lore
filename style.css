@@ -55,14 +55,22 @@ body {
   opacity: 1;
 }
 
+.sidebar a, .folder-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .sidebar {
   background-color: #0e0d0d;
   width: 2vw;
-  overflow: hidden;
   transition: width 0.3s ease;
   position: absolute;
   height: 100vh;
   z-index: 10;
+    overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
 }
 
 .sidebar:hover {

@@ -5,7 +5,50 @@ const texts = [
       { title: "Η Ανθρώπινη Συχνότητα", file: "Texts/Η Ανθρώπινη Συχνότητα", spotify: "5XaDhLfoLGPpIIlykywPmP" },
       { title: "Στιγμιαία Ταλάντωση", file: "Texts/Στιγμιαία Ταλάντωση.txt", spotify: "5XaDhLfoLGPpIIlykywPmP" }
     ]
-  }
+  }, 
+  {
+    folder: "Small things",
+    items: [
+      {title:"Σμολλερ Θινγκζ",file:"Texts/Corpse.txt",spotify:"11YmlaVpAB0Y3vfe8JR4eY"},
+    ]
+  },
+   {
+    folder: "Leythafer's Last Afair",
+    items: [
+      { title: "The Leythafer", file: "Texts/The Leythafer.txt", spotify: "7bRuu4oZs91UiNOj1cBAvj" },
+      {title: "The Pact",file:"Texts/The Pact.txt", spotify:"2OCheuqRCvchFZ12tvfMqb"},
+      {title: "The Tool",file:"Texts/The Tool.txt", spotify:"4ndzCwHkjo9fkN6jbSqNlB"},
+      {title: "Mireborn",file:"Texts/Mireborn.txt", spotify:"6XydPDin3lvWsT1tJI4QdL"},
+      {title: "To Find Purpose One Must Eat",file:"Texts/To Find Purpose One Must Eat.txt", spotify:"30c5iFJK2xkw6gwENm2Stx"},
+    ]
+  },
+  {
+    folder: "Everwilts",
+    items:[
+      {title:"Her Testimonial",file:"Texts/A Witch.txt",spotify:"1kwQ2WKfs5apzQ1GT3sjUI"},
+      {title:"Aoife", file:"Texts/Aoife.txt",spotify:"7tcDyhwJRiKN8O9ZzPoZAr"},
+      {title:"Y2", file:"Texts/Y2.txt",spotify:"64oUwqQEttPUs4Sp73b9Le"},
+      {title:"Esteemed Guests", file:"Texts/Esteemed Guests.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
+      {title:"Aziza", file:"Texts/Aziza.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
+      {title:"Lorcán", file:"Texts/Lorcan.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
+
+    ]
+  },
+  {
+    folder:"Erev",
+    items:[
+      {title:"Felt and Iskalia", file:"Texts/Felt And Iskalia.txt",spotify:"69ynWi60mH6oj2EYCL1yng"},
+      {title:"Old Friend", file:"Texts/Old Friend.txt",spotify:"7r9VE9hlSBjBS8OOigp42f"},
+      {title:"Of Eternal Love", file:"Texts/Of Eternal Love.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
+      {title:"A Hearth in the Dark", file:"Texts/A hearth in the Dark.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
+      {title:"They who control the seas", file:"Texts/They who control the sea.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
+      {title:"Death", file:"Texts/Death.txt",spotify:"1veWIDwshv259zwmIbO3Yh"},
+
+
+    ]
+  },
+  { title: "Read Me", file: "Texts/Read Me.txt", spotify: "5KahLK67IOhTUSZzW8mb5h" }
+  
 ]
 
 const main = document.querySelector(".main")
