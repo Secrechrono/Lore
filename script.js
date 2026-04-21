@@ -29,8 +29,8 @@ const texts = [
       {title:"Aoife", file:"Texts/Aoife.txt",spotify:"7tcDyhwJRiKN8O9ZzPoZAr"},
       {title:"Y2", file:"Texts/Y2.txt",spotify:"64oUwqQEttPUs4Sp73b9Le"},
       {title:"Esteemed Guests", file:"Texts/Esteemed Guests.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
-      {title:"Aziza", file:"Texts/Aziza.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
-      {title:"Lorcán", file:"Texts/Lorcan.txt",spotify:"3pY5GH7NgOs6RnEclGg9JN"},
+      {title:"Aziza", file:"Texts/Aziza.txt",spotify:"4ZZsSnVQXTMfYB2unKx7me"},
+      {title:"Lorcán", file:"Texts/Lorcan.txt",spotify:"73ZlmJxexVebFozgZhEhkd"},
 
     ]
   },
@@ -40,8 +40,8 @@ const texts = [
       {title:"Felt and Iskalia", file:"Texts/Felt And Iskalia.txt",spotify:"69ynWi60mH6oj2EYCL1yng"},
       {title:"Old Friend", file:"Texts/Old Friend.txt",spotify:"7r9VE9hlSBjBS8OOigp42f"},
       {title:"Of Eternal Love", file:"Texts/Of Eternal Love.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
-      {title:"A Hearth in the Dark", file:"Texts/A hearth in the Dark.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
-      {title:"They who control the seas", file:"Texts/They who control the sea.txt",spotify:"53bdM8Zo8cyGqaAtkie1aO"},
+      {title:"A Hearth in the Dark", file:"Texts/A hearth in the Dark.txt",spotify:"1idpYB5o0hqqTIXr1KbFxS"},
+      {title:"They who control the seas", file:"Texts/They who control the sea.txt",spotify:"21B9uYkOU8YNeEoT1MAThK"},
       {title:"Death", file:"Texts/Death.txt",spotify:"1veWIDwshv259zwmIbO3Yh"},
 
 
