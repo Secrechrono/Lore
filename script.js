@@ -17,7 +17,7 @@ const texts = [
     items: [
       { title: "The Leythafer", file: "Texts/The Leythafer.txt", spotify: "7bRuu4oZs91UiNOj1cBAvj" },
       {title: "The Pact",file:"Texts/The Pact.txt", spotify:"2OCheuqRCvchFZ12tvfMqb"},
-      {title: "The Tool",file:"Texts/The Tool.txt", spotify:"4ndzCwHkjo9fkN6jbSqNlB"},
+      {title: "The Tool",file:"Texts/TheTool.txt", spotify:"4ndzCwHkjo9fkN6jbSqNlB"},
       {title: "Mireborn",file:"Texts/Mireborn.txt", spotify:"6XydPDin3lvWsT1tJI4QdL"},
       {title: "To Find Purpose One Must Eat",file:"Texts/To Find Purpose One Must Eat.txt", spotify:"30c5iFJK2xkw6gwENm2Stx"},
     ]
