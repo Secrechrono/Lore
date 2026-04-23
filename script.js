@@ -137,7 +137,12 @@ texts.forEach(function(entry) {
       const link = document.createElement("a")
       link.href = "#"
       link.textContent = item.title
-      link.addEventListener("click", function() { loadText(item) })
+      link.addEventListener("click", function() {
+        loadText(item)
+        if ('ontouchstart' in window) {
+          document.querySelector(".sidebar").classList.remove("open")
+        }
+      })
       contents.appendChild(link)
     })
 
@@ -154,7 +159,41 @@ texts.forEach(function(entry) {
     const link = document.createElement("a")
     link.href = "#"
     link.textContent = entry.title
-    link.addEventListener("click", function() { loadText(entry) })
+    link.addEventListener("click", function() {
+      loadText(entry)
+      if ('ontouchstart' in window) {
+        closeSidebar()
+      }
+    })
     sidebar.appendChild(link)
   }
 })
+
+let touchStartX = 0
+
+document.addEventListener("touchstart", function(e) {
+  touchStartX = e.touches[0].clientX
+}, { passive: true })
+
+document.addEventListener("touchend", function(e) {
+  const touchEndX = e.changedTouches[0].clientX
+  const diffX = touchEndX - touchStartX
+  const spotifyWrapper = document.querySelector(".spotify-wrapper")
+
+  if (diffX > 50) {
+    openSidebar()
+    spotifyWrapper.style.opacity = "0"
+  } else if (diffX < -50) {
+    closeSidebar()
+    setTimeout(() => { spotifyWrapper.style.opacity = "0.7" }, 300)
+
+  }
+}, { passive: true })
+
+function closeSidebar() {
+  document.querySelector(".sidebar").classList.remove("open")
+}
+
+function openSidebar() {
+  document.querySelector(".sidebar").classList.add("open")
+}

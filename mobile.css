@@ -1,0 +1,83 @@
+/* mobile.css */
+
+html body .sidebar {
+  position: fixed !important;
+  width: 30px !important;
+  height: 100vh;
+  z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  transition: width 0.3s ease, z-index 0s ease 0.3s;
+}
+
+html body .sidebar.open {
+  width: 75vw !important;
+  z-index: 10;
+  transition: width 0.3s ease, z-index 0s ease 0s;
+}
+
+body {
+  background-size: 200px 200px;
+}
+
+.sidebar-indicator {
+  font-size: 1.5rem;
+}
+
+.sidebar a,
+.folder-title,
+.hide-spotify-btn {
+  opacity: 0 !important;
+  transition: opacity 0.5s ease !important;
+}
+
+.sidebar.open a,
+.sidebar.open .folder-title,
+.sidebar.open .hide-spotify-btn {
+  opacity: 1 !important;
+}
+
+.main {
+  margin-left: 35px;
+  max-width: 100%;
+  padding: 20px 16px;
+  font-size: 1rem;
+  padding-bottom: 80px;
+}
+
+.main p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.main h1 {
+  font-size: 1.4rem;
+}
+
+.intro {
+  width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+}
+
+.spotify-wrapper {
+  position: fixed;
+  top: 50%;
+  transform: translateX(-70%) translateY(-50%) rotate(-90deg);
+  z-index: 5;
+  opacity: 0.7;
+  transition: opacity 0.6s ease;
+}
+
+.spotify-wrapper:active {
+  opacity: 1;
+}
+
+.spotify-player {
+  width: 300px;
+  height: 80px;
+  border-radius: 12px;
+}
