@@ -1,4 +1,4 @@
-const texts = [
+const texts = [ //Ελπίζω να μην ψάχνεις για κωδικούς, αδύναμε, κατι γρίφοι είναι, λύστους
   {
     folder: "The Human Frequency",
     items: [
@@ -6,6 +6,18 @@ const texts = [
       { title: "Στιγμιαία Ταλάντωση", file: "Texts/Talantosi.txt", spotify: "5XaDhLfoLGPpIIlykywPmP" }
     ]
   }, 
+
+    {
+    folder: "Róisín",
+    items: [                                                                                    //Ντροπή που ήρθες για τον κωδικό
+      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: "γυμνή", riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
+        media:[
+          { type: "image", src: "images/Rose.jpg",className:"Rose" }
+        ]
+       }
+
+    ]
+  },
   {
     folder: "Small things",
     items: [
@@ -102,25 +114,7 @@ function revealWords(container) {
   }
 }
 
-function loadText(item) {
-  if (item.spotify) {
-    document.querySelector(".spotify-player").src =
-      `https://open.spotify.com/embed/track/${item.spotify}`
-  }
-  fetch(item.file)
-    .then(response => response.text())
-    .then(content => {
-      content = content.replace(/\r\n/g, "\n")
-      content = content.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      const paragraphs = content.split("\n\n")
-      main.innerHTML = `
-        <h1>${item.title}</h1>
-        ${paragraphs.map(p => `<p>${p.replaceAll("\n", "<br>")}</p>`).join("")}
-      `
-      revealWords(main)
-    })
-}
-
+//old place for loadText
 texts.forEach(function(entry) {
   if (entry.folder) {
     const folder = document.createElement("div")
@@ -137,6 +131,14 @@ texts.forEach(function(entry) {
       const link = document.createElement("a")
       link.href = "#"
       link.textContent = item.title
+      link.dataset.original = item.title
+      if (item.locked) {
+        link.classList.add("locked")
+        link.textContent = item.faketitle
+      } else {
+        link.textContent = item.title
+      }
+
       link.addEventListener("click", function() {
         loadText(item)
         if ('ontouchstart' in window) {
@@ -196,4 +198,104 @@ function closeSidebar() {
 
 function openSidebar() {
   document.querySelector(".sidebar").classList.add("open")
+}
+
+function loadText(item) {
+  const teasing = [
+    "You could do Better",
+    "You'll never find her like that",
+    "Are we serious Detective",
+    "Time is running out"
+  ]
+
+  function checkAnswer() {
+    const answer = document.querySelector(".riddle-input").value
+
+    if (answer.toLowerCase() === item.password.toLowerCase()) {
+      unlockSidebarItem(item)
+        fetchAndLoad(item)
+    } else {
+      let i = Math.floor(Math.random() * teasing.length)
+      document.querySelector(".riddle-error").textContent = teasing[i]
+    }
+  }
+
+  if (item.password) {
+    main.innerHTML = `
+      <div class="riddle">
+        <h1>${item.riddle}</h1>
+        <input type="text" class="riddle-input" placeholder="Your answer...">
+        <button class="riddle-submit">Enter</button>
+        <p class="riddle-error"></p>
+      </div>
+    `
+
+    const input = document.querySelector(".riddle-input")
+    const button = document.querySelector(".riddle-submit")
+
+    // button click
+    button.addEventListener("click", checkAnswer)
+
+    // ENTER key goes here 
+    input.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        checkAnswer()
+      }
+    })
+
+    return
+  }
+
+  fetchAndLoad(item)
+}
+
+function fetchAndLoad(item) {
+  if (item.spotify) {
+    document.querySelector(".spotify-player").src =
+      `https://open.spotify.com/embed/track/${item.spotify}`
+  }
+
+  fetch(item.file)
+    .then(r => r.text())
+    .then(content => {
+      content = content.replace(/\r\n/g, "\n")
+
+      const blocks = content.split("\n\n")
+
+      let html = ""
+
+      blocks.forEach(block => {
+        const imgMatch = block.match(/\[image:(.*?)\]/)
+
+        if (imgMatch) {
+          const parts = imgMatch[1].split("|")
+
+          const src = (parts[0] || "").trim()
+          const position = (parts[1] || "center").trim()
+          const size = (parts[2] || "medium").trim()
+
+          html += `<img src="${src}" class="content-image ${position} ${size}">`
+        }
+        else {
+          let text = block.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+
+          html += `<p class="reveal">${text.replaceAll("\n", "<br>")}</p>`
+        }
+      })
+
+      main.innerHTML = `
+        <h1>${item.title}</h1>
+        ${html}
+      `
+
+      revealWords(main)
+    })
+}
+function unlockSidebarItem(item) {
+  document.querySelectorAll(".sidebar a.locked").forEach(el => {
+    if (el.dataset.original === item.title) {
+      el.textContent = el.dataset.original
+      el.classList.remove("locked")
+    }
+  })
 }
