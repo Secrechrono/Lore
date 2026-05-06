@@ -10,7 +10,7 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
     {
     folder: "Róisín",
     items: [                                                                                    //Ντροπή που ήρθες για τον κωδικό
-      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: "γυμνή", riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
+      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: "daaa6a1dd8f587043bf115709682f1525edc57b43d0dedd577cf6327a800e30b", riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
         media:[
           { type: "image", src: "images/Rose.jpg",className:"Rose" }
         ]
@@ -208,12 +208,17 @@ function loadText(item) {
     "Time is running out"
   ]
 
-  function checkAnswer() {
-    const answer = document.querySelector(".riddle-input").value
+  async function checkAnswer() {
+    const answer = document.querySelector(".riddle-input").value.toLowerCase()
+    const encoder = new TextEncoder()
+    const data = encoder.encode(answer)
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data)
+    const hashArray = Array.from(new Uint8Array(hashBuffer))
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("")
 
-    if (answer.toLowerCase() === item.password.toLowerCase()) {
+    if (hashHex === item.password) {
       unlockSidebarItem(item)
-        fetchAndLoad(item)
+      fetchAndLoad(item)
     } else {
       let i = Math.floor(Math.random() * teasing.length)
       document.querySelector(".riddle-error").textContent = teasing[i]
