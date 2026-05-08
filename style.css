@@ -277,3 +277,11 @@ body {
 .content-image.large {
   max-width: 700px;
 }
+.audio-player {
+  width: 100%;
+  margin: 25px 0;
+  opacity: 0.35;
+  filter: grayscale(1) contrast(1.2);
+  border-radius: 10px;
+  filter: invert(1) hue-rotate(180deg);
+}

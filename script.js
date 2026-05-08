@@ -20,6 +20,18 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
         media:[
           { type: "image", src: "images/image.png",className:"Butterfly" }
         ]
+       },
+              {
+         title: "Sign of Life", file: "Texts/SheExists.txt", spotify: "0U0EuFlP1Wpp65Es8eCF6i", password: ["d272ecefb65ed28b2ce570c6315f63b2f5ecc959dda76cf7d51fe6ebd957af75"], riddle: "Welcome Detective",locked:true,faketitle:"Detective's Personal Notes",
+        media:[
+          { type: "image", src: "images/betternews.png",className:"News" },
+          { type: "image", src: "images/badnews.jpg",className:"News" },
+           { type: "image", src: "images/Bca.jpg",className:"Red" },
+            { type: "image", src: "images/Roisin.jpg",className:"Rose" },
+             { type: "image", src: "images/Eye.jpg",className:"Red" }
+        ],
+        type:"audio",
+        audio:"audio/morse.wav"
        }
 
     ]
@@ -235,30 +247,48 @@ function loadText(item) {
   }
 
   if (item.password) {
-    main.innerHTML = `
-      <div class="riddle">
-        <h1>${item.riddle}</h1>
-        <input type="text" class="riddle-input" placeholder="Your answer...">
-        <button class="riddle-submit">Enter</button>
-        <p class="riddle-error"></p>
-      </div>
+
+  let challengeHTML = `
+    <input type="text" class="riddle-input" placeholder="Your answer...">
+  `
+
+  if (item.type === "audio") {
+
+    const extension = item.audio.split('.').pop()
+
+    challengeHTML = `
+      <audio controls class="audio-player">
+        <source src="${item.audio}" type="audio/${extension}">
+      </audio>
+
+      <input type="text" class="riddle-input" placeholder="Your answer...">
     `
-
-    const input = document.querySelector(".riddle-input")
-    const button = document.querySelector(".riddle-submit")
-
-    // button click
-    button.addEventListener("click", checkAnswer)
-
-    // ENTER key goes here 
-    input.addEventListener("keydown", function(e) {
-      if (e.key === "Enter") {
-        checkAnswer()
-      }
-    })
-
-    return
   }
+
+  main.innerHTML = `
+    <div class="riddle">
+      <h1>${item.riddle}</h1>
+
+      ${challengeHTML}
+
+      <button class="riddle-submit">Enter</button>
+      <p class="riddle-error"></p>
+    </div>
+  `
+
+  const input = document.querySelector(".riddle-input")
+  const button = document.querySelector(".riddle-submit")
+
+  button.addEventListener("click", checkAnswer)
+
+  input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      checkAnswer()
+    }
+  })
+
+  return
+}
 
   fetchAndLoad(item)
 }
