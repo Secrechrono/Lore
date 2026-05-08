@@ -16,7 +16,7 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
         ]
        },
        {
-         title: "Journal Entry", file: "Texts/Journal.txt", spotify: "6XydPDin3lvWsT1tJI4QdL", password: ["e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38","f335fb846a57b59feb8ae3406b18a3f23c610b3360646f735d127047ea81173a"], riddle: "Tι είναι η Róisín? 3 121 19 21",locked:true,faketitle:"Evidence",
+         title: "Journal Entry", file: "Texts/Journal.txt", spotify: "2NHHKv9F4mYLSMfMl0jayB", password: ["e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38","f335fb846a57b59feb8ae3406b18a3f23c610b3360646f735d127047ea81173a"], riddle: "Tι είναι η Róisín? 3 121 19 21",locked:true,faketitle:"Evidence",
         media:[
           { type: "image", src: "images/image.png",className:"Butterfly" }
         ]
