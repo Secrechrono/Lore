@@ -10,9 +10,15 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
     {
     folder: "Róisín",
     items: [                                                                                    //Ντροπή που ήρθες για τον κωδικό
-      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: "daaa6a1dd8f587043bf115709682f1525edc57b43d0dedd577cf6327a800e30b", riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
+      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: ["0d521c012e88586975fa1681b5055ed0e6787d621ecb5e03f019e648494c0ef1"], riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
         media:[
           { type: "image", src: "images/Rose.jpg",className:"Rose" }
+        ]
+       },
+       {
+         title: "Journal Entry", file: "Texts/Journal.txt", spotify: "6XydPDin3lvWsT1tJI4QdL", password: ["e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38","f335fb846a57b59feb8ae3406b18a3f23c610b3360646f735d127047ea81173a"], riddle: "Tι είναι η Róisín? 3 121 19 21",locked:true,faketitle:"Evidence",
+        media:[
+          { type: "image", src: "images/image.png",className:"Butterfly" }
         ]
        }
 
@@ -211,15 +217,18 @@ function loadText(item) {
   async function checkAnswer() {
     const answer = document.querySelector(".riddle-input").value.toLowerCase()
     const encoder = new TextEncoder()
-    const data = encoder.encode(answer)
+    const data = encoder.encode(answer+"sdjgvnsidkvbsadvjbuerigbd23n3fv74gh9802bf82o3ndf928ghf874")
     const hashBuffer = await crypto.subtle.digest("SHA-256", data)
     const hashArray = Array.from(new Uint8Array(hashBuffer))
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("")
 
-    if (hashHex === item.password) {
+    if (item.password.includes(hashHex)) {
       unlockSidebarItem(item)
       fetchAndLoad(item)
-    } else {
+    }else if(item.password.includes("e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38")&&(hashHex==="cf5315b6322773cf0f93e7f79c576c8a636e37356c1a68a6483722cde4c0f7af" || hashHex==="0b44563f91b72d4805507115f3fb3a3ea6a083b6ddd23c7991d4b76b1188c5f2")){
+      document.querySelector(".riddle-error").textContent = "Cute, but she is so much more than a Rose"
+    }//Above is for text 2, a cool easter egg
+     else {
       let i = Math.floor(Math.random() * teasing.length)
       document.querySelector(".riddle-error").textContent = teasing[i]
     }
