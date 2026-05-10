@@ -32,8 +32,11 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
         ],
         type:"audio",
         audio:"audio/morse.wav"
-       }
-
+       },
+      {
+        title:"Hard Drive of Roisin De Valognes",file:"Texts/HardDrive.txt",spotify:"4YMc3A256xFBS0xcT77Qce",password:["ef70578fa5a95f34d14eea0e7143d176d616cfff9e381009440969fb990cd8f7"], riddle:"Qj vwm'km vbivbvk qpal, blbv a aizb jwxv plal, iwwpqteg wrqublia, wj b kekvgm igzmkl uc eijweeom xhz ekg jxiwlv. A mzypb qhc afbz bb, xem htawtwjw qw bgwlblxbdbvkbz | Hint:All Left",locked:true,faketitle:"Computer"
+        
+      }
     ]
   },
   {

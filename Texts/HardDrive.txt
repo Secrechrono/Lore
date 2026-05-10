@@ -1,0 +1,53 @@
+CASE FILE – DIGITAL FORENSICS REPORT
+SUBJECT: Róisín De Valognes
+CLASSIFICATION: Confidential – Internal Use Only
+STATUS: Ongoing Investigation
+
+Report of Important Leads Found on Róisín’s Hard Drives
+
+Names have not yet been brokered. “Róisín” appears to be her real name, though she frequently refers to herself in the third person.
+
+All recovered pictures were also found on her public pages, though altered. Investigators recovered the raw data and managed to unpixelate her face.
+
+She maintained a detailed list of all visitors, many of whom appeared intelligent enough to avoid prosecution before this data was leaked.
+
+Róisín appears to have erased herself from all government biodata records by accessing the computers of high government officials across the globe who followed her content.
+
+The above statement is contradicted by code found that can break into secure webpages, perhaps she had many leeways.
+
+Róisín appears to possess the credit records of eleven individuals, none of which seem to have been used.
+
+The password we issued granted access, though it appears to have simultaneously destroyed portions of the data. Our experts are currently attempting recovery.
+
+The following messages appear to be our strongest lead:
+
+(Suspect): I saw
+
+(Roisin): Αυτό με χαροποιεί
+
+(Suspect): I read the messages, i avoided the poison, I want to see more of you
+
+(Roisin): Η Ισπανία, πέφτει μακριά
+
+(Suspect): I don’t mind distance.
+
+(Roisin): Δεν είμαι πολύ… καλή με ανθρώπους
+
+(Suspect): You can try with me, it can be a first
+
+(Roisin): Δεν ξέρω αν θα σου άρεσε αυτό που θα έβλεπες, είσαι ο μόνος που έφτασε ως εδώ, αλλά δεν είσαι κρυμμένος καλά
+
+(Suspect):I can't reach your level, if I did I wouldn't ask to see you, I'd come and take you...so I need your help
+
+(Roisin): Γιατί να σε βοηθήσω;
+
+(Suspect): Θες να πεθάνεις, έτσι δεν είναι; Αν είναι να χαθείς, μη χαθείς μόνη σου. Αν είναι να πετάξεις τόση ομορφιά… δώσ’ την κάπου που θα τη δουν. Δώσ’ την σε εμένα.
+
+(Roisin): You used Google Translate for me… αυτό είναι κάπως γλυκό, actually.
+(Roisin): Οκ… θα κάνω κάτι. Αλλά μικρό.
+
+The conversation cuts off shortly thereafter. It appears Róisín was coerced into assisting an unidentified individual. Investigators believe the suspect exploited her emotional vulnerability in order to gain trust.
+Following this interaction, recovered material suggests Róisín deliberately increased the complexity of her encryption methods, further obscuring subsequent communications. Investigators are currently attempting decryption. Profilers are attemping to assess who this individual is and how they knew of Roisin's psychological vulnerability
+
+The following is our next best lead to break into further encrypted messages:
+"53.4766, -2.2357, Since you're here, whovever you are, I'll help you...take this"
