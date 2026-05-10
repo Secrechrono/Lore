@@ -235,6 +235,7 @@ function loadText(item) {
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, "0")).join("")
 
     if (item.password.includes(hashHex)) {
+      item.locked=false
       unlockSidebarItem(item)
       fetchAndLoad(item)
     }else if(item.password.includes("e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38")&&(hashHex==="cf5315b6322773cf0f93e7f79c576c8a636e37356c1a68a6483722cde4c0f7af" || hashHex==="0b44563f91b72d4805507115f3fb3a3ea6a083b6ddd23c7991d4b76b1188c5f2")){
@@ -246,7 +247,7 @@ function loadText(item) {
     }
   }
 
-  if (item.password) {
+  if (item.password && item.locked===true) {
 
   let challengeHTML = `
     <input type="text" class="riddle-input" placeholder="Your answer...">
