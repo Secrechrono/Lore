@@ -83,7 +83,7 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
 
 const main = document.querySelector(".main")
 const sidebar = document.querySelector(".sidebar")
-
+//Spotify shenanigans
 let spotifyHidden = false
 document.querySelector(".hide-spotify-btn").addEventListener("click", function() {
   spotifyHidden = !spotifyHidden
@@ -91,13 +91,13 @@ document.querySelector(".hide-spotify-btn").addEventListener("click", function()
   wrapper.style.display = spotifyHidden ? "none" : "block"
   this.style.opacity = spotifyHidden ? "0.4" : "1"
 })
-
 document.querySelector(".hide-spotify").addEventListener("click", function() {
   spotifyHidden = !spotifyHidden
   const wrapper = document.querySelector(".spotify-wrapper")
   wrapper.style.display = "none"
   this.textContent = spotifyHidden ? "Show Music" : "Hide Music"
 })
+//Reveal code for texts
 function revealWords(container) {
   const h1 = container.querySelector("h1")
   const paragraphs = container.querySelectorAll("p")
@@ -132,7 +132,7 @@ function revealWords(container) {
   }
 }
 
-//old place for loadText
+//Link Creation
 texts.forEach(function(entry) {
   if (entry.folder) {
     const folder = document.createElement("div")
@@ -189,12 +189,11 @@ texts.forEach(function(entry) {
   }
 })
 
+//Swipe code
 let touchStartX = 0
-
 document.addEventListener("touchstart", function(e) {
   touchStartX = e.touches[0].clientX
 }, { passive: true })
-
 document.addEventListener("touchend", function(e) {
   const touchEndX = e.changedTouches[0].clientX
   const diffX = touchEndX - touchStartX
@@ -209,15 +208,13 @@ document.addEventListener("touchend", function(e) {
 
   }
 }, { passive: true })
-
 function closeSidebar() {
   document.querySelector(".sidebar").classList.remove("open")
 }
-
 function openSidebar() {
   document.querySelector(".sidebar").classList.add("open")
 }
-
+//Load Text, contains the Check Answer, hashing easter eggs etc
 function loadText(item) {
   const teasing = [
     "You could do Better",
@@ -293,7 +290,7 @@ function loadText(item) {
 
   fetchAndLoad(item)
 }
-
+//My own Overleaf style image input
 function fetchAndLoad(item) {
   if (item.spotify) {
     document.querySelector(".spotify-player").src =
@@ -344,6 +341,7 @@ function unlockSidebarItem(item) {
     }
   })
 }
+//Mobile Button
 if ('ontouchstart' in window) {
   document.querySelector(".sidebar-indicator").addEventListener("click", function() {
     const sidebar = document.querySelector(".sidebar")
