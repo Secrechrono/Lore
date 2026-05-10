@@ -352,16 +352,7 @@ if ('ontouchstart' in window) {
     }
   })
 }
-
-fetch("https://hits.sh/secrechrono.github.io/Lore.svg")
-  .then(r => r.text())
-  .then(svg => {
-    const match = svg.match(/>(\d+)<\/text>/g)
-    if (match) {
-      const count = match[match.length - 1].replace(/<\/?[^>]+(>|$)/g, "")
-      document.querySelector(".visitor-count").textContent = count + " visitors"
-    }
-  })
-  .catch(() => {
-    document.querySelector(".visitor-count").textContent = "Visitor count unavailable :("
-  })
+//Visitor
+document.querySelector(".visitor-count").addEventListener("load", function() {
+  this.classList.add("loaded")
+})

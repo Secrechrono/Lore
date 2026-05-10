@@ -287,7 +287,12 @@ body {
 }
 
 .visitor-count {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.visitor-count.loaded {
+  opacity: 1;
   display: block;
   margin: 20px auto 0;
-  opacity: 0.4;
 }
