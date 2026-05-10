@@ -344,3 +344,13 @@ function unlockSidebarItem(item) {
     }
   })
 }
+if ('ontouchstart' in window) {
+  document.querySelector(".sidebar-indicator").addEventListener("click", function() {
+    const sidebar = document.querySelector(".sidebar")
+    if (sidebar.classList.contains("open")) {
+      closeSidebar()
+    } else {
+      openSidebar()
+    }
+  })
+}
