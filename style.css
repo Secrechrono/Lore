@@ -285,3 +285,9 @@ body {
   border-radius: 10px;
   filter: invert(1) hue-rotate(180deg);
 }
+
+.visitor-count {
+  display: block;
+  margin: 20px auto 0;
+  opacity: 0.4;
+}
