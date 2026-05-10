@@ -356,3 +356,8 @@ if ('ontouchstart' in window) {
 document.querySelector(".visitor-count").addEventListener("load", function() {
   this.classList.add("loaded")
 })
+
+console.log("%c Data is poisoned", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+console.log("%c All artificial inteligence has been halted, manual navigation is needed Detective ", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+console.log("%c Roisin was a tech genius, but some doors are better left closed than open", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+console.log("%c Perhaps the key to the cipher must be somewhere here", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
