@@ -314,7 +314,7 @@ function positionTip(tip, rect) {
     return
   }
 
-  tip.style.maxWidth = (window.innerWidth - 20) + "px"
+  tip.style.maxWidth = Math.min(400, window.innerWidth * 0.4) + "px"
   tip.style.left = "0px"
   tip.style.top = "-9999px"
   void tip.offsetWidth
