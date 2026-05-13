@@ -139,7 +139,7 @@ body {
 }
 .word-group {
   opacity: 0;
-  animation: fadeIn 2s ease forwards;
+  animation: fadeIn 2s ease forwards;  
 }
 
 @keyframes fadeIn {
@@ -157,6 +157,29 @@ body {
 .spotify-player{
     border-radius: 12px;
 
+}
+.hide-snow{
+    margin-top: 20px;
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  color: #d0d0d0;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: "Libre Baskerville", serif;
+}
+.Dyslexic-Mode {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  width: 130px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  color: #d0d0d0;
+  cursor: pointer;
+  font-family: "opendyslexic", serif;
 }
 .hide-spotify {
   margin-top: 20px;
@@ -295,4 +318,74 @@ body {
   opacity: 1;
   display: block;
   margin: 20px auto 0;
+}
+
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.layout {
+  position: relative;
+  z-index: 1;
+}
+
+.Roisin-Folder {
+  background-color: #0e0d0d;
+  background-image: url("https://www.transparenttextures.com/patterns/gray-floral.png");
+}
+
+.Roisin-Folder .folder-title {
+  color: #ffffff;
+}
+
+.Roisin-Folder a {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+/* Annotations*/
+.annotation {
+  position: relative;
+  /*border-bottom: 1px dotted #888;*/
+  cursor: help;
+  text-decoration: none;
+  border-bottom: none;
+  -webkit-text-decoration: none;
+
+}
+
+.annotation-tip {
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  font-size: 1rem;
+  padding: 10px 14px;
+  white-space: nowrap;
+  z-index: 100;
+  font-style: italic;
+  pointer-events: none;
+  bottom:auto;
+    white-space: normal;
+  max-width: 250px;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+.annotation:hover .annotation-tip,
+.annotation.active .annotation-tip {
+  display: block;
+}
+span[style] {
+  text-decoration: none;
 }

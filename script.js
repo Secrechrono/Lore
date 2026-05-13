@@ -9,20 +9,21 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
 
     {
     folder: "Róisín",
+    className:"Roisin-Folder",
     items: [                                                                                    //Ντροπή που ήρθες για τον κωδικό
-      { title: "Case File/Victim", file: "Texts/Testing.txt", spotify: "7uRGUYUj3oquFQAflWrwR8", password: ["0d521c012e88586975fa1681b5055ed0e6787d621ecb5e03f019e648494c0ef1"], riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
+      { title: "Case File/Victim", file: "Texts/Testing.txt",  folder: "roisin", spotify: "7uRGUYUj3oquFQAflWrwR8", password: ["0d521c012e88586975fa1681b5055ed0e6787d621ecb5e03f019e648494c0ef1"], riddle: "Η ***** αλήθεια είναι πάντα η πιο αηδιαστική, η ***** σάρκα η πιο δελεαστική",locked:true,faketitle:"Classified",
         media:[
           { type: "image", src: "images/Rose.jpg",className:"Rose" }
         ]
        },
        {
-         title: "Journal Entry", file: "Texts/Journal.txt", spotify: "2NHHKv9F4mYLSMfMl0jayB", password: ["e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38","f335fb846a57b59feb8ae3406b18a3f23c610b3360646f735d127047ea81173a"], riddle: "Tι είναι η Róisín? 3 121 19 21",locked:true,faketitle:"Evidence",
+         title: "Journal Entry", file: "Texts/Journal.txt", folder: "roisin", spotify: "2NHHKv9F4mYLSMfMl0jayB", password: ["e3b9a682efe9df925d1ac45a6354552daea2329aabcbf072add023f6c2ad8e38","f335fb846a57b59feb8ae3406b18a3f23c610b3360646f735d127047ea81173a"], riddle: "Tι είναι η Róisín? 3 121 19 21",locked:true,faketitle:"Evidence",
         media:[
           { type: "image", src: "images/image.png",className:"Butterfly" }
         ]
        },
               {
-         title: "Sign of Life", file: "Texts/SheExists.txt", spotify: "0U0EuFlP1Wpp65Es8eCF6i", password: ["d272ecefb65ed28b2ce570c6315f63b2f5ecc959dda76cf7d51fe6ebd957af75"], riddle: "Welcome Detective",locked:true,faketitle:"Detective's Personal Notes",
+         title: "Sign of Life", file: "Texts/SheExists.txt", folder: "roisin", spotify: "0U0EuFlP1Wpp65Es8eCF6i", password: ["d272ecefb65ed28b2ce570c6315f63b2f5ecc959dda76cf7d51fe6ebd957af75"], riddle: "Welcome Detective",locked:true,faketitle:"Detective's Personal Notes",
         media:[
           { type: "image", src: "images/betternews.png",className:"News" },
           { type: "image", src: "images/badnews.jpg",className:"News" },
@@ -34,7 +35,7 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
         audio:"audio/morse.wav"
        },
       {
-        title:"Hard Drive of Roisin De Valognes",file:"Texts/HardDrive.txt",spotify:"4YMc3A256xFBS0xcT77Qce",password:["ef70578fa5a95f34d14eea0e7143d176d616cfff9e381009440969fb990cd8f7"], riddle:"Qj vwm'km vbivbvk qpal, blbv a aizb jwxv plal, iwwpqteg wrqublia, wj b kekvgm igzmkl uc eijweeom xhz ekg jxiwlv. A mzypb qhc afbz bb, xem htawtwjw qw bgwlblxbdbvkbz | Hint:All Left",locked:true,faketitle:"Computer"
+        title:"Hard Drive of Roisin De Valognes",file:"Texts/HardDrive.txt", folder: "roisin",spotify:"4YMc3A256xFBS0xcT77Qce",password:["ef70578fa5a95f34d14eea0e7143d176d616cfff9e381009440969fb990cd8f7"], riddle:"Qj vwm'km vbivbvk qpal, blbv a aizb jwxv plal, iwwpqteg wrqublia, wj b kekvgm igzmkl uc eijweeom xhz ekg jxiwlv. A mzypb qhc afbz bb, xem htawtwjw qw bgwlblxbdbvkbz | Hint:All Left",locked:true,faketitle:"Computer"
         
       }
     ]
@@ -84,6 +85,10 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
   
 ]
 
+let particleColor = "220, 220, 220"
+let particlesVisible = true
+let dyslexiaMode = false
+
 const main = document.querySelector(".main")
 const sidebar = document.querySelector(".sidebar")
 //Spotify shenanigans
@@ -117,12 +122,14 @@ function revealWords(container) {
 
   paragraphs.forEach(el => {
     if (el.innerHTML.trim() === "") return
-    const words = el.innerHTML.split(" ")
-    el.innerHTML = words.map(word => {
+    const html = el.innerHTML
+    const result = html.replace(/(<span class="annotation"[^>]*>(?:(?!<\/span>).)*<\/span><\/span>)|(\S+)/g, (match, annotation, word) => {
       const groupIndex = Math.floor(globalIndex / 50)
       globalIndex++
-      return `<span class="word-group" style="animation-delay: ${titleDelay + groupIndex * 0.3}s">${word} </span>`
-    }).join("")
+      const content = annotation || word
+      return `<span class="word-group" style="animation-delay: ${titleDelay + groupIndex * 0.3}s">${content} </span>`
+    })
+    el.innerHTML = result
   })
 
   const totalDuration = titleDelay + Math.floor(globalIndex / 50) * 0.3 + 2
@@ -140,7 +147,7 @@ texts.forEach(function(entry) {
   if (entry.folder) {
     const folder = document.createElement("div")
     folder.classList.add("folder")
-
+    if (entry.className) folder.classList.add(entry.className) //For later customisation
     const title = document.createElement("span")
     title.classList.add("folder-title")
     title.innerHTML = `<span class="folder-arrow">›</span> ${entry.folder}`
@@ -293,8 +300,81 @@ function loadText(item) {
 
   fetchAndLoad(item)
 }
-//My own Overleaf style image input
+let annotationLocked = false
+function positionTip(tip, rect) {
+  tip.style.position = "fixed"
+  tip.style.display = "block"
+  tip.style.zIndex = "9999"
+
+  if ('ontouchstart' in window) {
+    tip.style.maxWidth = (window.innerWidth - 40) + "px"
+    tip.style.left = "50%"
+    tip.style.transform = "translateX(-50%)"
+    tip.style.top = (rect.bottom + 8) + "px"
+    return
+  }
+
+  tip.style.maxWidth = (window.innerWidth - 20) + "px"
+  tip.style.left = "0px"
+  tip.style.top = "-9999px"
+  void tip.offsetWidth
+  const tipWidth = tip.offsetWidth
+  const tipHeight = tip.offsetHeight
+  let left = rect.left
+  let top = rect.bottom + 8
+  if (left + tipWidth > window.innerWidth - 10) left = window.innerWidth - tipWidth - 10
+  if (left < 10) left = 10
+  if (top + tipHeight > window.innerHeight) top = rect.top - tipHeight - 8
+  tip.style.left = left + "px"
+  tip.style.top = top + "px"
+}
+//Annotation Button, stack overflow  i understand half of this lowkey
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("annotation")) {
+    annotationLocked = !annotationLocked
+    const tip = e.target._tip || e.target.querySelector(".annotation-tip")
+    if (annotationLocked) {
+      e.target.style.opacity = "0.7"
+      if (tip) {
+        document.body.appendChild(tip)
+        const rect = e.target.getBoundingClientRect()
+        positionTip(tip,rect)
+        e.target._tip = tip
+        e.target._locked = true
+      }
+    } else {
+      e.target.style.opacity = ""
+      if (tip) {
+        e.target.appendChild(tip)
+        tip.style.display = "none"
+        e.target._locked = false
+      }
+    }
+  }
+})
+//Hover for annotations
+document.addEventListener("mouseover", function(e) {
+  if (e.target.classList.contains("annotation")) {
+    const tip = e.target.querySelector(".annotation-tip")
+    if (tip) {
+      document.body.appendChild(tip)
+      const rect = e.target.getBoundingClientRect()
+      positionTip(tip,rect)
+      e.target._tip = tip
+    }
+  }
+})
+
+document.addEventListener("mouseout", function(e) {
+  if (e.target.classList.contains("annotation") && e.target._tip && !e.target._locked) {
+    e.target.appendChild(e.target._tip)
+    e.target._tip.style.display = "none"
+    e.target._tip = null
+  }
+})
+//My own Overleaf style image input, now handles annotations too
 function fetchAndLoad(item) {
+  particleColor = item.folder === "roisin" ? "231, 0, 18" : "220, 220, 220"
   if (item.spotify) {
     document.querySelector(".spotify-player").src =
       `https://open.spotify.com/embed/track/${item.spotify}`
@@ -323,7 +403,7 @@ function fetchAndLoad(item) {
         }
         else {
           let text = block.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-
+          text = text.replace(/\{\{(.*?)\|(.*?)\|(.*?)\}\}/g, '<span class="annotation" style="border-bottom: none; text-decoration: none; color: $3">$1<span class="annotation-tip">$2</span></span>')
           html += `<p class="reveal">${text.replaceAll("\n", "<br>")}</p>`
         }
       })
@@ -360,7 +440,67 @@ document.querySelector(".visitor-count").addEventListener("load", function() {
   this.classList.add("loaded")
 })
 
-console.log("%c Data is poisoned", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
-console.log("%c All artificial inteligence has been halted, manual navigation is needed Detective ", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
-console.log("%c Roisin was a tech genius, but some doors are better left closed than open", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
-console.log("%c Perhaps the key to the cipher must be somewhere here", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+function easterEgg(){
+  console.log("%c Data is poisoned", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+  console.log("%c All artificial inteligence has been halted, manual navigation is needed Detective ", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+  console.log("%c Roisin was a tech genius, but some doors are better left closed than open", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+  console.log("%c Perhaps the key to the cipher must be somewhere here", "background: #000; color: #e0e0e0; font-size: 20px; font-family: serif; padding: 10px 20px; border: 1px solid #e0e0e0;")
+}
+easterEgg()
+//Dyslexia
+document.querySelector(".Dyslexic-Mode").addEventListener("click", function() {
+  dyslexiaMode = !dyslexiaMode
+  document.body.style.fontFamily = dyslexiaMode ? "OpenDyslexic, serif" : ""
+  document.body.style.letterSpacing = dyslexiaMode ? "0.05em" : ""
+  document.body.style.lineHeight = dyslexiaMode ? "2" : ""
+  this.textContent = dyslexiaMode ? "Default Mode" : "Dyslexic Mode"
+})
+//Snow button
+document.querySelector(".hide-snow").addEventListener("click", function() {
+  particlesVisible = !particlesVisible
+  canvas.style.display = particlesVisible ? "block" : "none"
+  this.textContent = particlesVisible ? "Hide Snow" : "Show Snow"
+})
+
+const canvas = document.getElementById("particles")
+const ctx = canvas.getContext("2d")
+
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+})
+
+const particles = Array.from({ length: 240 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  size: Math.random() * 1.5 + 0.5,
+  speed: Math.random() * 0.4 + 0.1,
+  opacity: Math.random() * 0.4 + 0.1,
+  drift: (Math.random() - 0.5) * 0.3
+}))
+//Animations
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  particles.forEach(p => {
+    ctx.beginPath()
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+    ctx.fillStyle = `rgba(${particleColor}, ${p.opacity})`
+    ctx.fill()
+    p.y += p.speed
+    p.x += p.drift
+    if (p.y > canvas.height) {
+      p.y = 0
+      p.x = Math.random() * canvas.width
+    }
+    if (p.x > canvas.width || p.x < 0) {
+      p.x = Math.random() * canvas.width
+    }
+  })
+  requestAnimationFrame(animate)
+}
+
+animate()
+
