@@ -81,8 +81,8 @@ const texts = [ //Ελπίζω να μην ψάχνεις για κωδικού�
 
     ]
   },
-  { title: "Read Me", file: "Texts/ReadMe.txt", spotify: "5KahLK67IOhTUSZzW8mb5h" }
-  
+  { title: "Read Me", file: "Texts/ReadMe.txt", spotify: "5KahLK67IOhTUSZzW8mb5h" },
+  { title: "Privacy Policy", file: "Texts/privacy.txt"}
 ]
 
 let particleColor = "220, 220, 220"
@@ -378,6 +378,9 @@ function fetchAndLoad(item) {
   if (item.spotify) {
     document.querySelector(".spotify-player").src =
       `https://open.spotify.com/embed/track/${item.spotify}`
+  }
+  else{
+    document.querySelector(".spotify-player").src="";
   }
 
   fetch(item.file)

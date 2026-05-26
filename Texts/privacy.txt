@@ -1,0 +1,18 @@
+Privacy Policy
+
+This is a personal, non-commercial creative writing archive. This site does not directly collect, store, or process personal data.
+
+Third-party services
+
+This site uses third-party services that may collect data according to their own privacy policies:
+
+Google Fonts — used to load typefaces. Requests may be made to Google servers.
+Spotify — music players are embedded on some pages. Spotify may set cookies and collect data according to its privacy policy.
+hits.sh — used to count page visits. This service may log IP addresses.
+Local storage
+
+This site uses your browser’s local storage to remember preferences such as accessibility settings and which texts you have read. This data remains on your device and is never transmitted by this site.
+
+Contact
+
+If you have questions about this policy, you may reach out through the site’s GitHub repository.
